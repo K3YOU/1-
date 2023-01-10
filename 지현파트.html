@@ -390,6 +390,28 @@
         document.write("<h2>[문제4]</h2>")
         document.write("<p>판매수량이 제일 높은 순으로 상품 출력하기</p>")
 
+
+        for(var i = 0;i<prdData.length;i++){
+          var count = prdData[i][ "salesQuantity" ] /1
+          var max = count
+          var maxindex = j
+          for(j= i; j <prdData.length;j++){
+            if(prdData[i]["salesQuantity"]/1>prdData[j]["salesQuantity"]/1){
+              temp = prdData[i]
+              prdData[i] = prdData[j]
+              prdData[j] = temp 
+            }
+          }
+        }
+        document.write("<br/>")
+        
+        for(z=0;z<prdData.length;z++){
+        var a = prdData[z]["salesQuantity"]/1;
+        var b = prdData[z]["prdName"]
+        document.write(`${b} : ${a} 개<br>`);
+        }
+
+
         
         document.write("<br/>")
         document.write("<br/>")
@@ -398,24 +420,26 @@
         document.write("<h2>[문제5]</h2>")
         document.write("<p>최종금액이 낮은 순으로 출력하기</p>")
       
+        // 스트링을 숫자로 바꿔주기 : /1 하기
 
+        // ttlprAmnt의 순서만 낮은 순서로 바꿔서 출력하기
+        for(var i = 0; i < userData.length; i++){
+          for(var j = i; j < userData.length; j++){
+            if(userData[i]["ttlprAmnt"] /1> userData[j]["ttlprAmnt"]/1){
+              temp = userData[i];
+              userData[i] = userData[j]
+              userData[j] = temp;;
+            }
+          }
 
-        // for(var i = 0; i < userData.length; i++){
-        //   for(var j = i; j < userData.length; j++){
-        //     if(userData[i]["ttlprAmnt"] > userData[j]["ttlprAmnt"]){
-        //       temp = userData[i];
-        //       userData[i] = userData[j]
-        //       userData[j] = temp;;
-        //     }
-        //   }
-
-        // }
+        }
         document.write(`<br>`)
+
     for(z=0;z<userData.length;z++){
-      var a = userData[z]["ttlprAmnt"];
-      document.write(`${a} <br>`);
+      var a = userData[z]["ttlprAmnt"]/1;
+      document.write(`${a} 원<br>`);
     }
-        /*
+        /* 디비 전체의 숫자를 낮은 순서대로 바꿔서 출력하는 법
       i = 0
       while (i <userData.length){
         var total_price = userData[i]["ttlprAmnt"];
@@ -440,11 +464,11 @@
         i += 1
       }
       */
-      document.write(`<br>`)
-      for(z=0;z<userData.length;z++){
-        var a = userData[z]["ttlprAmnt"];
-        document.write(`${a} <br>`);
-      }
+      // document.write(`<br>`)
+      // for(z=0;z<userData.length;z++){
+      //   var a = userData[z]["ttlprAmnt"];
+      //   document.write(`${a} <br>`);
+      // }
         
     </script>
     </div>
