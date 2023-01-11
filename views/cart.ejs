@@ -123,7 +123,9 @@
                                 style="font-weight: bold;">전체선택
                         </div>
                         <button class="selDelBtn"
-                            style="color: #333; background-color: #fff; border-color: #ccc;">선택삭제</button>
+                            style="color: #333; background-color: #fff; border-color: #ccc;">
+                            <a href="empty"> 선택삭제</a>
+                        </button>
                     </div>
 
                     <div class="warp_part_bottom">
@@ -131,8 +133,8 @@
                             <input class="checkbox" type="checkbox" checked>
 
                             <div>
-                                <button class="wrap_part_btn">바로구매</button>
-                                <button class="wrap_part_btn">삭제하기</button>
+                                <button class="wrap_part_btn"><a href="#">바로구매</a></button>
+                                <button class="wrap_part_btn"> <a href="deletePro?">   삭제하기</a></button>
                             </div>
                         </div>
 
@@ -140,13 +142,16 @@
 
                         <div style="display: flex; padding-bottom: 21px; ">
                             <img class="img"
-                                src="https://images.seoulstore.com/products/4b5dc6a4cf624d68c587a52b26e75968.jpg"
+                                src="prd"
                                 href="cloth">
 
                             <div style="margin-left: 20px;">
-                                <span style="font-weight: bold; ">페퍼시즈닝</span><br>
-                                <span>유니섹스 와이드 밴딩 슬랙스 P-7 black</span><br><br>
-                                <span>#세일</span>
+                                <span style="font-weight: bold; "><%= brndName %></span><br>
+                                <span><%=prdName %></span><br><br>
+                                <% if (prdDate["saleOrNot"] == true) { %>
+                                <span> # sale </span>
+                                <% } %>
+
                             </div>
                         </div>
                     </div>
@@ -199,6 +204,7 @@
 
                 <div class="main2">
                     <h4> 나의 결제 예상 금액은?</h4>
+
 
                     <table class="order_upper">
 
