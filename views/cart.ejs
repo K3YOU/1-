@@ -10,7 +10,8 @@
 </head>
 
 <body>
-    <%- include('header.ejs') %>
+    <!-- < %- include ('header.ejs') %> -->
+
     <!-- <div class="header">
         
         <img style="display: flex; flex-direction: row; "
@@ -21,84 +22,7 @@
 
     <div class="wallpaper">
 
-        <!-- <div class="menu_top">
 
-            <div class="logo_div">
-                <img class="logo_img" src="https://www.seoulstore.com/images/ss_logo_gnb.jpg">
-            </div>
-
-            
-            <div class="serach_contain">
-                <div class="serach_box">
-                    
-                    <div class="serach_outdiv">
-                        <img class="serach_imogi" src="../magnifying-glass-solid.svg">
-                    </div>
-                    <input class="serach_input" type="text" placeholder="어그 꼼파뇨 스퀘어라인">
-
-                </div>
-            </div>
-
-            <div class="imogi_group">
-                <div>
-                    <img class="heart" src="../heart-regular.svg">
-                </div>
-
-                <div>
-                    <img class="cart" src="../magnifying-glass-solid.svg">
-                    <span class="cart_num">1</span>
-                </div>
-
-                <div class="name_div">
-                    <div class="name">김</div>
-
-                </div>
-            </div class="imogi_group">
-            
-            
-
-        </div>
- -->
-        <!--  -->
-        <!--  -->
-
-        <!-- <ul class="menu_bottom">
-            <div class="detail_group"> 
-                <li class="menu_detail" style="color: #ccc; font-weight: 700; line-height: 2.1;">전체상품
-                </li>
-                <li class="menu_detail" style="color: #f70061;font-weight: 700; line-height: 2.1; ">베스트
-                </li>
-                <li class="menu_detail" style="color: #0c00ff;font-weight: 700; line-height: 2.1; ">후드티
-                </li>
-                <li class="menu_detail" style=" color:#f46b24; font-weight: 700; line-height: 2.1;">핸드백
-                </li>
-                <li class="menu_detail" style="color: #00d26d; font-weight: 700; line-height: 2.1;">뷰티
-                </li>
-                <li class="menu_detail" style="color: #ccc; font-weight: 700; line-height: 2.1;">신상
-                </li>
-            </div> -->
-            <!-- <li class="menu_detail" style=" color: #ccc; font-weight: 700; line-height: 2.1;">서울그램
-                </li>
-                <li class="menu_detail" style=" color: #ccc; font-weight: 700; line-height: 2.1;">BRAND
-                </li>
-                <li class="menu_detail" style=" color: #ccc; font-weight: 700; line-height: 2.1;">브랜드소식
-                </li> -->
-            
-            <!-- <div class="detail_group2">    
-                <li class="menu_detail" style="font-weight: 700; line-height: 2.1;">더보기 >
-                </li>
-                <li class="menu_detail" style="font-weight: 700; line-height: 2.1;">실시간 인기 검색어
-                </li>
-                <li id="keywords">
-                <li class="menu_detail" style="font-weight: 700; line-height: 2.1;">1위 목도리
-                </li>
-                <li class="menu_detail" style="font-weight: 700; line-height: 2.1;">NEW
-                </li>
-                </li>
-            </div>
-        </ul> -->
-
-        <!--  -->
 
         <div class="wholebody">
             <div class="h3div">
@@ -110,8 +34,9 @@
             <!--  -->
 
             <div class="content_box" style="width: 1160px;">
+           
 
-
+                
                 <div class="main1" style="border-bottom: 1px solid black;">
                     <div>구매 가능한 상품 <span style="color: #f70061; font-weight: bold;">1</span>
                     </div>
@@ -131,26 +56,30 @@
                     <div class="warp_part_bottom">
                         <div class="wrap_part_2">
                             <input class="checkbox" type="checkbox" checked>
-
+                  
                             <div>
                                 <button class="wrap_part_btn"><a href="#">바로구매</a></button>
-                                <button class="wrap_part_btn"> <a href="deletePro?">   삭제하기</a></button>
+                                
+                                <button class="wrap_part_btn"> <a href="deletPro?">   삭제하기 </a></button>
+                              
                             </div>
+                            
                         </div>
+
+                     
 
 
 
                         <div style="display: flex; padding-bottom: 21px; ">
-                            <img class="img"
-                                src="prd"
-                                href="cloth">
-
+                            <img  alt = "cloth" class="img"
+                                src=""
+                            >
                             <div style="margin-left: 20px;">
-                                <span style="font-weight: bold; "><%= brndName %></span><br>
-                                <span><%=prdName %></span><br><br>
-                                <% if (prdDate["saleOrNot"] == true) { %>
+                                <span style="font-weight: bold; ">노스페이스</span><br>
+                                <span> "[해외] 우먼스 노스페이스 써모볼 트랙션 뮬 V 블랙 NF0A···", </span><br><br>
+                                
                                 <span> # sale </span>
-                                <% } %>
+                             
 
                             </div>
                         </div>
@@ -158,7 +87,7 @@
 
                     <div class="size_box">
                         <div class="size">사이즈</div>
-                        <div style="font-weight: bold;">M(기모)</div>
+                        <div style="font-weight: bold;">free</div>
 
                     </div>
                     <div class="mid_spans ">
@@ -171,9 +100,9 @@
 
                     <div class="up_spans">
                         <div class="spans">
-                            <span style="color: #f70061; font-weight: bold;">49%</span>
+                            <span style="color: #f70061; font-weight: bold;">15%</span>
                             <span style="color: #f70061; font-weight: bold;">21,900</span>
-                            <span>42,900</span>
+                            <span>24900원</span>
                         </div>
 
                         <div class="count_btn">
@@ -182,6 +111,7 @@
 
                             </span>
 
+                            
                             <input type="number" placeholder="1">
 
 
@@ -210,7 +140,7 @@
 
                         <tr class="order_detail">
                             <td>주문상품 수</td>
-                            <td>1개</td>
+                            <td>1 </td>
 
                         </tr>
 
@@ -240,6 +170,9 @@
 
                     <button class="order_btn"> 주문하러 가기</button>
                 </div>
+
+       
+
             </div class="wholebody">
         </div>
 

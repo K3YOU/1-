@@ -1,25 +1,67 @@
+//서버세팅
 var express = require("express");
 var app = express();
 var port = 4444;
-
-app.listen(port, function(){
+var server = app.listen(port, function(){
     console.log(`${port} server is working`);
 })
 
+//ejs세팅(views)
 var ejs = require("ejs");
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
-
 app.use(express.static(__dirname + '/public'));
 
-//main.ejs
+
+//img 폴더 경로 설정
+
+//session세팅
+var session = require("express-session");
+app.use(session({							// session에는 옵션3가지를 설정해야줘야 한다. 
+	secret : "abcdefg",						// secret에는 아무 내용이나 작성해주고,
+	resave : false,							// 나머지는 false로 설정한다.
+	saveUninitialized : false
+}));
+
+
+// 라우터 폴더 연결   
+/// 장바구니
+require("./router/cartct")(app); 
+
+
+
+
+//index router setting
 app.get("/", function(req, res){
-    res.redirect("main")
+    var prdData = getPrdDataSample();
+    var cartDB = getCartSample();
+    req.session.cartDB = cartDB;
+    req.session.prdData = prdData;
+    res.redirect("index");
 });
+
+app.get("/index",function(req, res){
+    var prdData = req.session.prdData;
+    var cartDB = req.session.cartDB;
+    var renderData = {
+        "prdData": prdData,
+        "cartDB": cartDB,
+    };
+    res.render("index.ejs", renderData);
+});
+
+
+
+
+
+
 
 //cart.ejs
 app.get("/cart",function(req, res){
-    res.render("cart.ejs");
+    var renderData = {
+        "cartDB" : req.session.cartDB
+    }
+    res.render("cart.ejs",renderData);
 });
 
 //best.ejs
@@ -36,8 +78,10 @@ app.get("/empty",function(req,res){
 })
 
 
-//deletePro
-//router
+
+
+
+
 
 
 
@@ -48,18 +92,11 @@ app.get("/getPrdDataSample",function(req,res){
 })
 
 
-//getCartSample
-function getCartSample() {
-	var cartDB = [
-		{"cartNo" : 1, "cartMemberId" : "qwer", "cartBookName" : "혼자 공부하는 파이썬", "cartBuyCount" : 1, "cartBookImage" : "9.jpg", "cartBuyBookPrice" : 16200}
-	];
-	return cartDB;
-}
-
 
 
 //prdData
-var prdData = [{
+function getPrdDataSample(){
+    var prdData = [{
     "key" : 0,
     "invnt" : 100,
     "prdName" : "ANC WOOL TWISTED BUCKET HAT_BLACK",
@@ -339,4 +376,48 @@ var prdData = [{
     "likesAmt" : 19,
     "salesQuantity":1
     }
-];
+    ];
+
+    return prdData;
+}
+
+
+
+// cart DB
+function getCartSample() {
+	var cartDB = [
+		{"cartNo" : 0, 
+        "cartMemberId" : "qwer", 
+        "cartPrdName" : "[해외] 우먼스 노스페이스 써모볼 트랙션 뮬 V 블랙 NF0A···",
+        "cartPrdImg" :"img/prdImg20.jpeg",
+        "cartbrndName" :  "노스페이스", 
+        "cartsaleOrNot " :true, 
+        "cartBuyCount" : 1, 
+        "cartPrdImage" : "img/prdImg20.jpeg", 
+        "cartdscntRate":"0.45",
+        "cartBuyPrdPrice" : "154,900", 
+        "cartsalesQuantity":1}
+	];
+	return cartDB;
+};
+
+
+//라우터 세팅
+
+app.get("/", function(req, res){ 
+
+	var prdData = getPrdDataSample();
+	var cartDB = getCartSample();
+	// var bookDB = getBookSample();
+    // var boardDB = getBoardSample();
+
+	req.session.log = null;
+	req.session.name = null;
+	// req.session.orderDB = [];
+	// req.session.memberDB = memberDB;
+	req.session.prdData = prdData;
+	req.session.cartDB = cartDB;
+	// req.session.boardDB = boardDB;
+
+    res.redirect("index"); 
+});
