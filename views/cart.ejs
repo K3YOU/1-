@@ -10,19 +10,9 @@
 </head>
 
 <body>
-    <!-- < %- include ('header.ejs') %> -->
 
-    <!-- <div class="header">
-        
-        <img style="display: flex; flex-direction: row; "
-            src="https://images.seoulstore.com/7f76cc293801c63734810e05a5b5cdc2.jpg">
-
-    </div> -->
-    <!--  -->
-
+    <form action="cart"> 
     <div class="wallpaper">
-
-
 
         <div class="wholebody">
             <div class="h3div">
@@ -31,14 +21,16 @@
                 </h3>
             </div>
 
-            <!--  -->
+      
 
             <div class="content_box" style="width: 1160px;">
            
 
                 
                 <div class="main1" style="border-bottom: 1px solid black;">
-                    <div>구매 가능한 상품 <span style="color: #f70061; font-weight: bold;">1</span>
+                    <div>구매 가능한 상품 
+                        <span style="color: #f70061; font-weight: bold;"><%=cartDB.length%></span>
+
                     </div>
 
 
@@ -60,7 +52,7 @@
                             <div>
                                 <button class="wrap_part_btn"><a href="#">바로구매</a></button>
                                 
-                                <button class="wrap_part_btn"> <a href="deletPro?">   삭제하기 </a></button>
+                                <button class="wrap_part_btn"> <a href="#">   삭제하기 </a></button>
                               
                             </div>
                             
@@ -68,19 +60,19 @@
 
                      
 
+    <%for(i=0; i<cartDB.length; i++){%>
+        <% var cartpercent = cartDB[i]["cartdscntRate"] * 100%>
+        <% var returncartper =  cartDB[i]["cartBuyPrdPrice"] *(1-  cartDB[i]["cartdscntRate"])  %>
+        <% var point = cartDB[i]["cartsalesQuantity"] * 1/100%>
 
-
-                        <div style="display: flex; padding-bottom: 21px; ">
-                            <img  alt = "cloth" class="img"
-                                src=""
-                            >
+                        <div style="display: flex; flex-direction:column; padding-bottom: 21px; ">
+                            <img  alt ="cloth" class ="img" src=<%=cartDB[i]["cartPrdImage"]%> >
                             <div style="margin-left: 20px;">
-                                <span style="font-weight: bold; ">노스페이스</span><br>
-                                <span> "[해외] 우먼스 노스페이스 써모볼 트랙션 뮬 V 블랙 NF0A···", </span><br><br>
-                                
-                                <span> # sale </span>
-                             
-
+                                <span style="font-weight: bold; "> <%=cartDB[i]["cartbrndName"]%></span><br>
+                                <span> <%=cartDB[i]["cartPrdName"]%> </span><br><br>
+                                <% if (cartDB[i]["cartsaleOrNot"]== true){%>
+                                    <span> # sale </span>
+                                 <%}%>
                             </div>
                         </div>
                     </div>
@@ -100,9 +92,9 @@
 
                     <div class="up_spans">
                         <div class="spans">
-                            <span style="color: #f70061; font-weight: bold;">15%</span>
-                            <span style="color: #f70061; font-weight: bold;">21,900</span>
-                            <span>24900원</span>
+                            <span style="color: #f70061; font-weight: bold;"><%=cartpercent %>%</span>
+                            <span style="color: #f70061; font-weight: bold;"> <%=returncartper %> </span>
+                            <span> <%=cartDB[i]["cartsalesQuantity"]%> </span>
                         </div>
 
                         <div class="count_btn">
@@ -146,7 +138,7 @@
 
                         <tr class="order_detail">
                             <td>주문금액 </td>
-                            <td style="text-align: right;">24,900원</td>
+                            <td style="text-align: right;"> <%=cartDB[i]["cartBuyPrdPrice"]%> </td>
 
                         </tr>
 
@@ -157,26 +149,27 @@
 
                         <tr class="order_detail">
                             <td>적립 예상 마일리지</td>
-                            <td>+249원</td>
+                            <td> <%=point%> </td>
 
                         </tr>
 
                         <tr class="order_detail">
                             <td>결제 예상 금액</td>
-                            <td>24,900원</td>
-
+                            <td> <%=cartDB[i]["cartsalesQuantity"]%></td>
+        <%}%>
                         </tr>
                     </table>
-
+   
                     <button class="order_btn"> 주문하러 가기</button>
                 </div>
-
+   
        
 
             </div class="wholebody">
         </div>
 
     </div class="wallpaper">
+    </form>
 </body>
 
 </html>
